@@ -402,6 +402,7 @@
         status: 'pending',
         submittedAt: serverTimestamp()
       });
+      await setDoc(doc(db, 'users', uid), { status: 'pending_review' }, { merge: true });
       await signOut(auth);
       alert('Payment details submit ho gaye. Admin verify karne ke baad account activate hoga.');
       showView('login');
